@@ -27,16 +27,12 @@
 
 
 function addNumber(number) {
-  const digits = []
   const results = []
   let sum = 0;
   // number is being converted to a string
   const stringNumber = number.toString();
-  // looping through the array
-  for (let i = 0; i < stringNumber.length; i++) {
-    // adding it to the array
-    digits.push(stringNumber[i]);
-  }
+  // splitting the string into separate digits
+  const digits = stringNumber.split('');
 
   digits.forEach(function(element, index){
     if (element === digits[index+1]) {
