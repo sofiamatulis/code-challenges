@@ -22,17 +22,20 @@
 // sum all of the digits in the array
 // 7- else just add a zero
 
+// const if it wont change
+// let if it will
+
 
 function addNumber(number) {
   const digits = []
   const results = []
-  var sum = 0;
+  let sum = 0;
   // number is being converted to a string
-  number = number.toString();
+  const stringNumber = number.toString();
   // looping through the array
-  for (i = 0; i < number.length; i++) {
+  for (let i = 0; i < stringNumber.length; i++) {
     // adding it to the array
-    digits.push(number[i]);
+    digits.push(stringNumber[i]);
   }
 
   digits.forEach(function(element, index){
@@ -40,6 +43,7 @@ function addNumber(number) {
       results.push(element);
     }
   })
+
 
   // comparing the first one to the last one
   if (digits[0] === digits[digits.length - 1 ]) {
@@ -49,9 +53,13 @@ function addNumber(number) {
   results.forEach(function(element){
     sum += parseInt(element);
   })
-  console.log(sum);
+  console.log(sum, 'sum');
 
 }
 
 
 addNumber(312213);
+
+// the for i loops
+// for the for each function --> it runs the function every time the loop runs and it modifies the array
+// the map function --> runs the function every time the loop runs and it creates a new array
