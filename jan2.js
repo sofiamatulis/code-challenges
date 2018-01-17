@@ -40,7 +40,6 @@ function addNumber(number) {
     }
   })
 
-
   // comparing the first one to the last one
   if (digits[0] === digits[digits.length - 1 ]) {
     results.push(digits[0]);
@@ -49,10 +48,8 @@ function addNumber(number) {
   results.forEach(function(element){
     sum += parseInt(element);
   })
-  console.log(sum, 'sum');
 
 }
-
 
 addNumber(312213);
 
