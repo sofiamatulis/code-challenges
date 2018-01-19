@@ -16,50 +16,122 @@
 // I will check if the number is even or odd, if its odd it will return false. If it is even the code will keep running
 
 // After counting I will compare the last one to the first one and so on till the loop ends
+function getCorrespondingBracket(bracket) {
+  const bracketDictionary = {
+    "{": "}",
+    "[": "]",
+    "(": ")",
+    "}": "{",
+    "]": "[",
+    "}": "{"
+  }
 
+  return bracketDictionary[bracket];
 
-function checkBracket(bracket) {
-  console.log('beginning');
-  const dictionary = {
+}
+
+function getOpenBracket(bracket) {
+  const openDictionary = {
     "{": "}",
     "[": "]",
     "(": ")"
   }
-  const results = [];
-
-  console.log(dictionary, 'bracket');
-
-  if (bracket.length % 2 === 0) {
-
-    for (i = 0; i < bracket.length; i++) {
-      if (bracket[0] === bracket[bracket.length-1]) {
-        results.push(element);
-        console.log("trueee");
-
-      }
-      else {
-        console.log('here');
-        return false
-      }
-    }
-
-    console.log("end");
-    return true;
-
-
-    // if (bracket[0] === bracket[bracket.length-1] {
-    //   results.push(bracket[0]);
-    // }
-  } else {
-    return false
-  }
-  console.log("false");
-
-
+  return openDictionary[bracket];
 
 }
 
-checkBracket(['{','[',']','}']);
+function getClosedBracket(bracket) {
+  const closeDictionary = {
+    "}": "{",
+    "]": "[",
+    "}": "{"
+  }
+
+  return closeDictionary[bracket];
+
+}
+
+// module.exports = { getCorrespondingBracket: getCorrespondingBracket };
+
+// const result = getCorrespondingBracket(']')  // '}'
+
+// I need to compare them with the dictionary
+
+function compareBracket(bracket) {
+
+  console.log(bracket, 'bracket')
+
+  // for (i = 0; i < bracket.length; i++) {
+  //     getOpenBracket(bracket);
+  //
+  //     getClosedBracket(bracket);
+  // }
+
+  bracket.forEach(function(element){
+    if (getOpenBracket(element)) {
+      console.log('Open Bracket');
+    } else {
+      console.log('does not match')
+    }
+  })
+
+  bracket.forEach(function(element){
+    if (getCorrespondingBracket(element)) {
+      console.log('Matches');
+    } else {
+      console.log('does not match')
+    }
+  })
+
+
+}
+// function checkBracket(bracket) {
+//   console.log('beginning');
+//
+//
+//
+//   // const closing = {
+//   //   ")": "(",
+//   // }
+//
+//   dictionary["{"]
+//
+// )(
+//   const results = [];
+//
+//   console.log(dictionary[key], 'bracket');
+//
+//   if (bracket.length % 2 === 0) {
+//
+//     for (i = 0; i < bracket.length; i++) {
+//       if (bracket[0] === dictionary[key]) && (bracket[bracket.length-1] === dictionary[value]) {
+//         results.push(element);
+//         console.log("trueee");
+//
+//       }
+//       else {
+//         console.log('here');
+//         return false
+//       }
+//     }
+//
+//     console.log("end");
+//     return true;
+//
+//
+//     // if (bracket[0] === bracket[bracket.length-1] {
+//     //   results.push(bracket[0]);
+//     // }
+//   } else {
+//     return false
+//   }
+//   console.log("false");
+//
+//
+//
+// }
+
+compareBracket(['{','}']);
 
 
 // check while
