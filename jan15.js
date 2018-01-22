@@ -16,6 +16,7 @@
 // I will check if the number is even or odd, if its odd it will return false. If it is even the code will keep running
 
 // After counting I will compare the last one to the first one and so on till the loop ends
+
 function getCorrespondingBracket(bracket) {
   const bracketDictionary = {
     "{": "}",
@@ -51,87 +52,72 @@ function getClosedBracket(bracket) {
 
 }
 
-// module.exports = { getCorrespondingBracket: getCorrespondingBracket };
+function compareBracket(bracketList) {
 
-// const result = getCorrespondingBracket(']')  // '}'
+  console.log(bracketList, 'bracketList')
 
-// I need to compare them with the dictionary
 
-function compareBracket(bracket) {
+  const queue = [];
 
-  console.log(bracket, 'bracket')
-
-  // for (i = 0; i < bracket.length; i++) {
-  //     getOpenBracket(bracket);
-  //
-  //     getClosedBracket(bracket);
-  // }
-
-  bracket.forEach(function(element){
+  // for (i = 0; i < ...; i++)
+  for (const element of bracketList) {
+          // if this is an opening bracket....
     if (getOpenBracket(element)) {
-      console.log('Open Bracket');
-    } else {
-      console.log('does not match')
-    }
-  })
 
-  bracket.forEach(function(element){
-    if (getCorrespondingBracket(element)) {
-      console.log('Matches');
-    } else {
-      console.log('does not match')
-    }
-  })
+      queue.push(element);  // [] => [element], [a, b, c] => [a,b ,c, element]
+      console.log('open Bracket', queue);
 
+    } else if (getClosedBracket(element)) {
+      // if this is a closing bracket....
+      console.log(element, 'here', getCorrespondingBracket(element));
+
+      const currentOpeningBracket = queue.pop();
+
+      if (currentOpeningBracket === getCorrespondingBracket(element)) {
+        console.log('matches , keep going');
+
+      } else {
+        console.log(`${element} doesnt match`);
+        return false;
+      }
+    } else {
+      console.log('not valid');
+      // this is neither an opening or closing bracket
+    }
+
+  }
+  if (queue.length === 0) {
+    console.log('true');
+    return true;
+  }
 
 }
-// function checkBracket(bracket) {
-//   console.log('beginning');
-//
-//
-//
-//   // const closing = {
-//   //   ")": "(",
-//   // }
-//
-//   dictionary["{"]
-//
-// )(
-//   const results = [];
-//
-//   console.log(dictionary[key], 'bracket');
-//
-//   if (bracket.length % 2 === 0) {
-//
-//     for (i = 0; i < bracket.length; i++) {
-//       if (bracket[0] === dictionary[key]) && (bracket[bracket.length-1] === dictionary[value]) {
-//         results.push(element);
-//         console.log("trueee");
-//
-//       }
-//       else {
-//         console.log('here');
-//         return false
-//       }
-//     }
-//
-//     console.log("end");
-//     return true;
-//
-//
-//     // if (bracket[0] === bracket[bracket.length-1] {
-//     //   results.push(bracket[0]);
-//     // }
-//   } else {
-//     return false
-//   }
-//   console.log("false");
-//
-//
-//
-// }
-
 compareBracket(['{','}']);
 
 
+// try to find a bunch of different examples to feed into this and manually check if this is correct
+// => write some tests (assertions)
+
+// handle a string input instead of an array
+
+// handle bad input
+
+
+
 // check while
+
+// Run a loop of the brackets
+//
+// Each turn, the input bracket changes.
+//
+//  I am checking if its opening or closing
+//
+//  If its opening, push to a new array
+//
+//  then keep going (console log but dont break the loop)
+//
+//  check matching balanced by new array last one and the element
+//
+//  .push and .pop
+//
+//  Check matching balanced by index and index -1
