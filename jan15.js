@@ -54,13 +54,12 @@ function getClosedBracket(bracket) {
 
 function compareBracket(bracketList) {
 
-  console.log(bracketList, 'bracketList')
-
+  const bracketListArray = bracketList.split('');
 
   const queue = [];
 
   // for (i = 0; i < ...; i++)
-  for (const element of bracketList) {
+  for (const element of bracketListArray) {
           // if this is an opening bracket....
     if (getOpenBracket(element)) {
 
@@ -92,13 +91,11 @@ function compareBracket(bracketList) {
   }
 
 }
-compareBracket(['{','}']);
+compareBracket('{{}}');
 
 
 // try to find a bunch of different examples to feed into this and manually check if this is correct
 // => write some tests (assertions)
-
-// handle a string input instead of an array
 
 // handle bad input
 
